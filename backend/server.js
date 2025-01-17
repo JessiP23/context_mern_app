@@ -53,7 +53,7 @@ app.post('/api/generate-course', async (req, res) => {
     const responseContent = completion.choices[0].message.content.trim();
 
     // Optionally, log the response for debugging
-    console.log('Raw Response:', responseContent);
+    // console.log('Raw Response:', responseContent);
 
     // Parse the JSON response
     const courseStructure = JSON.parse(responseContent);
