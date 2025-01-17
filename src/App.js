@@ -16,10 +16,11 @@ const CourseGenerator = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     try {
-      const response = await fetch('/api/generate-course', {
+      const response = await fetch('http://localhost:3000/api/generate-course', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({
           name: courseName,
