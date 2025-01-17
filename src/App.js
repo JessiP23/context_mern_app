@@ -29,8 +29,8 @@ const CourseGenerator = () => {
     setLoading(true);
     setError(null);
 
-    // Simulated delay for demonstration
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Delay for loading state
+    // await new Promise(resolve => setTimeout(resolve, 2000));
 
     try {
       const response = await fetch('http://localhost:3000/api/generate-course', {
