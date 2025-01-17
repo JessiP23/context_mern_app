@@ -1,5 +1,22 @@
 import React, { useState } from 'react';
 
+
+/**
+ * Couser Generator App
+ * MERN stack
+ * 
+ * Takes course name and description to display an AI-generated course structure on the topic specified by the user
+ * 
+ * 
+ * 
+ * @see React Hooks: https://react.dev/reference/react
+ * @see React Forms: https://react.dev/reference/react-dom/components#form-components
+ * @see Fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+ * @see Tailwind CSS: https://tailwindcss.com/docs
+ * 
+ */
+
+
 const CourseGenerator = () => {
   const [courseName, setCourseName] = useState('');
   const [courseDescription, setCourseDescription] = useState('');
