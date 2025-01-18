@@ -106,7 +106,8 @@ const UserProfile = () => {
                       <span className="text-sm text-gray-500">
                         {course.weeks.length} weeks
                       </span>
-                      <button 
+                      <button
+                        onClick={() => navigate(`/course/${course._id}`)} 
                         className="px-3 py-1 bg-black text-white rounded-md hover:bg-gray-800 transition-colors text-sm"
                       >
                         View Course

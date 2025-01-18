@@ -6,6 +6,7 @@ import Auth from './components/Auth';
 import CourseGenerator from './components/MyApp';
 import axios from 'axios';
 import UserProfile from './components/Profile';
+import CourseView from './components/CourseView';
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/" element={token ? <Navigate to="/generate" /> : <Auth setToken={saveToken} />} />
           <Route path="/generate" element={token ? <CourseGenerator /> : <Navigate to="/" />} />
           <Route path="/profile" element={token ? <UserProfile /> : <Navigate to="/" />} />
+          <Route path="/course/:courseId" element={token ? <CourseView /> : <Navigate to="/" />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

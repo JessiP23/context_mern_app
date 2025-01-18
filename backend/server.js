@@ -253,6 +253,21 @@ app.get('/api/user/profile', authenticate, async (req, res) => {
 });
 
 
+// Add this route to your Express server
+app.get('/api/courses/:courseId', authenticate, async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.courseId);
+    if (!course) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+    res.json(course);
+  } catch (error) {
+    console.error('Error fetching course:', error);
+    res.status(500).json({ error: 'Failed to fetch course' });
+  }
+});
+
+
 // protected routes
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
