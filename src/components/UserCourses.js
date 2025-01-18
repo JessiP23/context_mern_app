@@ -6,6 +6,7 @@ const UserCourses = ({ token }) => {
   const [courses, setCourses] = useState([]);
   const [progressData, setProgressData] = useState({});
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const fetchUserCourses = async () => {
@@ -17,6 +18,11 @@ const UserCourses = ({ token }) => {
         const userCourses = userRes.data.courses;
 
         setCourses(userCourses);
+
+        if (userCourses.length === 0) {
+          setMessage('You have no courses yet. Please start by generating a new coursee!')
+          return;
+        }
 
         // Fetch progress for each course
         const progressPromises = userCourses.map(course =>
@@ -38,6 +44,14 @@ const UserCourses = ({ token }) => {
 
     fetchUserCourses();
   }, [token]);
+
+  if (error) {
+    return (
+      <div className='max-w-4xl mx-auto p-5'>
+        <div className='bg-red-100 text-red-700 p-2 rounded'>{error}</div>
+      </div>
+    )
+  }
 
   const toggleComplete = async (courseId, weekId, currentStatus) => {
     try {
@@ -64,34 +78,40 @@ const UserCourses = ({ token }) => {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">My Courses</h2>
-      {error && <div className="bg-red-100 text-red-700 p-2 mb-4 rounded">{error}</div>}
-      {courses.map(course => (
-        <div key={course._id} className="mb-6">
-          <h3 className="text-xl font-semibold">{course.name}</h3>
-          <p>{course.description}</p>
-          <div className="mt-4">
-            {progressData[course._id]?.length ? (
-              <ul className="space-y-2">
-                {progressData[course._id].map(week => (
-                  <li key={week.weekId} className="flex items-center justify-between p-2 border rounded">
-                    <span>
-                      Week: {week.weekId.title} {/* Adjust based on actual data structure */}
-                    </span>
-                    <button
-                      onClick={() => toggleComplete(course._id, week.weekId, week.completed)}
-                      className={`px-3 py-1 rounded ${
-                        week.completed ? 'bg-green-500 text-white' : 'bg-gray-300'
-                      }`}
-                    >
-                      {week.completed ? 'Completed' : 'Mark as Complete'}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            ) : <p>No progress data available.</p>}
+      {
+        courses.length === 0 ? (
+          <div className='bg-yellow-100 text-yellow-700 p-2 rounded'>
+            You have no courses yet. Please start by generating a new course!
           </div>
-        </div>
-      ))}
+        ) : (
+          courses.map(course => (
+            <div key={course._id} className="mb-6">
+              <h3 className="text-xl font-semibold">{course.name}</h3>
+              <p>{course.description}</p>
+              <div className="mt-4">
+                {progressData[course._id]?.length ? (
+                  <ul className="space-y-2">
+                    {progressData[course._id].map(week => (
+                      <li key={week.weekId} className="flex items-center justify-between p-2 border rounded">
+                        <span>
+                          Week: {week.weekId.title} {/* Adjust based on actual data structure */}
+                        </span>
+                        <button
+                          onClick={() => toggleComplete(course._id, week.weekId, week.completed)}
+                          className={`px-3 py-1 rounded ${
+                            week.completed ? 'bg-green-500 text-white' : 'bg-gray-300'
+                          }`}
+                        >
+                          {week.completed ? 'Completed' : 'Mark as Complete'}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : <p>No progress data available.</p>}
+              </div>
+            </div>
+          ))
+        )}
     </div>
   );
 };
