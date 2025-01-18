@@ -74,7 +74,25 @@ app.post('/api/generate-course', async (req, res) => {
   }
 });
 
+// authentication to frontend
+const authenticate = (req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) return res.status(401).json({error: 'Access denied'});
+
+    try {
+        const verifiedUser = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = verifiedUser;
+        next();
+    } catch (error) {
+        res.status(401).json({error: 'Invalid token'});
+    }
+}
+
+// protected routes
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
+export { authenticate };
