@@ -3,9 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { Groq } from 'groq-sdk';
 import jwt from 'jsonwebtoken';
-
-import { User, Course, Progress } from './models/Course.js';
-
 import courseRoutes from './routes/courses.js';
 import authenticationRoutes from './routes/auth.js';
 
