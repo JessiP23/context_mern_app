@@ -66,7 +66,7 @@ router.get('/:courseId', authenticate, async(req, res) => {
 
 
 // update progress for a week course
-router.put('/update', authenticte, async(req, res) => {
+router.put('/update', authenticate, async(req, res) => {
     const {courseId, weekId, completed} = req.body;
     try {
         const progress = await Progress.findOne({ userId: req.user.userId, courseId });
