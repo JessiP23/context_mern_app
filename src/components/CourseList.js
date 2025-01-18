@@ -10,7 +10,7 @@ const CourseList = ({ token }) => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await axios.get('/api/courses');
+        const res = await axios.get('http://localhost:3000/api/courses');
         setCourses(res.data);
       } catch (error) {
         console.error('Failed to fetch courses', error);
