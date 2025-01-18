@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Initialize Groq client - correct syntax
 const groq = new Groq({
-  apiKey: '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'
+  apiKey: process.env.GROQ_API_KEY
   // Or use environment variable:
   // apiKey: process.env.GROQ_API_KEY
 });
