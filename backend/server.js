@@ -13,17 +13,8 @@ dotenv.config();
 
 const app = express();
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/course-generator';
-
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch((err) => {
-  console.error('MongoDB connection error:', err);
-  process.exit(1);
-});
+// debug
+// console.log('MongoDB_URI:', MONGO_URI);
 
 app.use(cors());
 app.use(express.json());
@@ -86,6 +77,19 @@ app.post('/api/generate-course', async (req, res) => {
     console.error('Error generating course:', error);
     res.status(500).json({ error: 'Failed to generate course structure' });
   }
+});
+
+
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/course-generator';
+
+mongoose.connect(MONGO_URI)
+.then(() => {
+  const dbName = mongoose.connection.db.databaseName;
+  console.log(`🚀 Connected to MongoDB Database: ${dbName}`);
+})
+.catch((err) => {
+  console.error('❌ MongoDB connection error:', err);
+  process.exit(1);
 });
 
 
