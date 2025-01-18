@@ -25,6 +25,29 @@ const CourseDetail = ({ token, courseId }) => {
     fetchCourseDetail();
   }, [token, courseId]);
 
+  const toggleComplete = async (courseId, weekId, currentStatus) => {
+    try {
+        await axios.put('http://localhost:3000/api/progress/update', 
+            {
+                courseId, 
+                weekId, 
+                completed: !currentStatus
+            }, {
+            headers: {Authorization: `Bearer ${token}`}
+        });
+
+        setProgress(prev => 
+            prev.map(week => 
+                week.weekId.toString() === weekId.toString() ? {...week, completed: !currentStatus} : week
+            )
+        )
+    } catch (err) {
+        console.error('Failed to update progress', err);
+        alert('Unable to update progress');
+    }
+  }
+
+
   if (error) return <div className="text-red-500">{error}</div>;
     if (!course) return <div>Loading...</div>;
 
