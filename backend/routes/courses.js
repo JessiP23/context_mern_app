@@ -11,3 +11,16 @@
 import express from 'express';
 import { authenticate } from '../server';
 import { User } from '../models/Course';
+import { Course } from '../models/Course';
+
+const router = express.Router();
+
+router.get('/', async (req, res) => {
+    // get all courses from AI if any
+    try {
+
+        const courses = await Course.find();
+    } catch (error) {
+        res.status(500).json({message: 'Failed to fetch courses', error: error.message});
+    }
+})
