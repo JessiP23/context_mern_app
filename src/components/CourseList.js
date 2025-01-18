@@ -22,7 +22,7 @@ const CourseList = ({ token }) => {
   const handleSelect = async () => {
     if (!selected) return;
     try {
-      const res = await axios.post('/api/courses/select', { courseId: selected }, {
+      const res = await axios.post('http://localhost:3000/api/courses/select', { courseId: selected }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMessage(res.data.message);
