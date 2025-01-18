@@ -9,9 +9,9 @@
  */
 
 import express from 'express';
-import { authenticate } from '../server';
-import { User } from '../models/Course';
-import { Course } from '../models/Course';
+import { authenticate } from '../server.js';
+import { User } from '../models/Course.js';
+import { Course } from '../models/Course.js';
 
 const router = express.Router();
 
