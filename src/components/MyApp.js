@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 /**
@@ -25,6 +26,8 @@ const CourseGenerator = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [savedCourse, setSavedCourse] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -109,7 +112,12 @@ const CourseGenerator = () => {
       {/* Main Container */}
       <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
         <h2 className="text-2xl font-bold mb-6">Course Generator</h2>
-        
+        <button
+              onClick={() => navigate('/profile')}
+              className="ml-4 px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
+            >
+              Go to My Profile
+            </button>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
