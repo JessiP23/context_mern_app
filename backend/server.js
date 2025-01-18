@@ -3,6 +3,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { Groq } from 'groq-sdk';
 
+import { courseSchema } from './models/Course';
+import { progressSchema } from './models/Course';
+
 dotenv.config();
 
 const app = express();
