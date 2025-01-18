@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Groq } from 'groq-sdk';
-
+import jwt from 'jsonwebtoken';
 import { courseSchema } from './models/Course';
 import { progressSchema } from './models/Course';
 
