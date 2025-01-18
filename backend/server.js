@@ -6,6 +6,10 @@ import { Groq } from 'groq-sdk';
 import { courseSchema } from './models/Course';
 import { progressSchema } from './models/Course';
 
+import authenticationRoutes from './routes/auth.js';
+
+app.use('/api/auth', authenticationRoutes);
+
 dotenv.config();
 
 const app = express();
