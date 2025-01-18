@@ -14,7 +14,7 @@ const Auth = ({ setToken }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    const url = isLogin ? '/api/auth/login' : '/api/auth/register';
+    const url = isLogin ? 'http://localhost:3000/api/auth/login' : 'http://localhost:3000/api/auth/register';
     try {
       const response = await axios.post(url, form);
       if (isLogin) {
