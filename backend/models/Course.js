@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
  * 
  * 
  * Aspects to consider for the course generator:
+ * User Schema
  * Topic
  * Description
  * Week Content
@@ -14,6 +15,18 @@ import mongoose from 'mongoose';
  * 
  */
 
+
+const userSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course',
+    }],
+}, {
+    timestamps: true
+});
 
 const weekSchema = new mongoose.Schema({
     title: String,
@@ -55,4 +68,8 @@ const progressSchema = new mongoose.Schema({
     }]
 })
 
-export { courseSchema, progressSchema };
+const User = mongoose.model('User', userSchema);
+const Course = mongoose.model('Course', courseSchema);
+const Progress = mongoose.model('Progress', progressSchema);
+
+export { User, Course, Progress };
