@@ -24,3 +24,14 @@ router.get('/', async (req, res) => {
         res.status(500).json({message: 'Failed to fetch courses', error: error.message});
     }
 })
+
+
+// select a course if any
+router.post('/select', authenticate, async(req, res) => {
+    const {courseId} = req.body;
+    try {
+
+    } catch (error) {
+        res.status(500).json({message: 'Failed to select course', error: error.message});
+    }
+})
