@@ -37,3 +37,15 @@ router.post('/initialize', authenticate, async (req, res) => {
         res.status(500).json({message: 'Failed to initialize progress', error: error.message});
     }
 })
+
+
+
+// obtain progress for a course
+router.get('/:courseId', authenticate, async(req, res) => {
+    const {courseId} = req.params;
+    try {
+
+    } catch (error) {
+        res.status(500).json({error: 'Failed to fetch progress', message: error.message});
+    }
+})
