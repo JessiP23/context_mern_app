@@ -156,7 +156,7 @@ app.get('/api/courses', authenticate, async (req, res) => {
 app.post('/api/courses/select', authenticate, async (req, res) => {
   const { courseId } = req.body;
   try {
-    const user = await User.findById(req.user.userId);
+    const user = await User.findById(req.user._id);
 
     // Check if the user exists
     if (!user) return res.status(404).json({ error: 'User not found' });
