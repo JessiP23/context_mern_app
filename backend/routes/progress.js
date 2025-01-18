@@ -1,3 +1,15 @@
+/**
+ * 
+ * 
+ * Steps to implement progress tracking:
+ * 1. Initialize progress for a course
+ * 2. Obtain progress for a course for a user
+ * 3. Update progress for a week in a course
+ * 
+ * 
+ */
+
+
 import express from 'express';
 import { authenticate } from '../server.js';
 import { Progress } from '../models/Course.js';
