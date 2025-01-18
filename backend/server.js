@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { Groq } from 'groq-sdk';
 import jwt from 'jsonwebtoken';
 import courseRoutes from './routes/courses.js';
+import progressRoutes from './routes/progress.js';
 import authenticationRoutes from './routes/auth.js';
 
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authenticationRoutes);
 app.use('/api/courses', courseRoutes);
+app.use('/api/progress', progressRoutes);
 
 
 // Initialize Groq client - correct syntax
