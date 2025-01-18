@@ -44,8 +44,31 @@ router.post('/initialize', authenticate, async (req, res) => {
 router.get('/:courseId', authenticate, async(req, res) => {
     const {courseId} = req.params;
     try {
-
+        const progress = await Progress.findOne({userId: req.user.userId, courseId}).populate('courseId');
+        if (!progress) return res.status(404).json({error: 'Progress not found'});
+        res.json(progress);
     } catch (error) {
         res.status(500).json({error: 'Failed to fetch progress', message: error.message});
     }
-})
+});
+
+
+// update progress for a week course
+router.put('/update', authenticte, async(req, res) => {
+    const {courseId, weekId, completed} = req.body;
+    try {
+        const progress = await Progress.findOne({ userId: req.user.userId, courseId });
+        if (!progress) return res.status(404).json({error: 'Progress not found'});
+
+        const week = progress.weekProgress.find(week => week.weekId.toString() === weekId);
+        if (!week) return res.status(404).json({error: 'Week not found'});
+
+        week.completed = completed;
+        week.lastAccessed = new Date();
+
+        await progress.save();
+        res.json({message: 'Week progress updated successfully'});
+    } catch (error) {
+        res.status(500).json({error: 'Failed to update progress', message: error.messge});
+    }
+});
