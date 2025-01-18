@@ -12,6 +12,7 @@ import React, { useState } from 'react';
  * @see React Hooks: https://react.dev/reference/react
  * @see React Forms: https://react.dev/reference/react-dom/components#form-components
  * @see Fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+ * @see Fetch API: https://www.freecodecamp.org/news/fetch-data-react/
  * @see Tailwind CSS: https://tailwindcss.com/docs
  * 
  */
