@@ -1,11 +1,10 @@
-// src/App.js
+// manage token state
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Auth from './components/Auth';
 import CourseGenerator from './components/MyApp';
-import CourseList from './components/CourseList';
-import UserCourses from './components/UserCourses';
-import CourseDetail from './components/CourseDetails';
+import axios from 'axios';
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -20,6 +19,12 @@ const App = () => {
     setToken('');
   };
 
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete axios.defaults.headers.common['Authorization'];
+  }
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
@@ -30,10 +35,9 @@ const App = () => {
           ) : null}
         </nav>
         <Routes>
-          <Route path="/" element={token ? <Navigate to="/courses" /> : <Auth setToken={saveToken} />} />
+          <Route path="/" element={token ? <Navigate to="/generate" /> : <Auth setToken={saveToken} />} />
           <Route path="/generate" element={token ? <CourseGenerator /> : <Navigate to="/" />} />
-          <Route path="/courses" element={token ? <UserCourses token={token} /> : <Navigate to="/" />} />
-          <Route path="/courses/:id" element={token ? <CourseDetail token={token} /> : <Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </Router>
