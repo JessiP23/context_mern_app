@@ -10,10 +10,10 @@ const CourseDetail = ({ token, courseId }) => {
   useEffect(() => {
     const fetchCourseDetail = async () => {
       try {
-        const courseRes = await axios.get(`/api/courses/${courseId}`);
+        const courseRes = await axios.get(`http://localhost:3000/api/courses/${courseId}`);
         setCourse(courseRes.data);
 
-        const progressRes = await axios.get(`/api/progress/${courseId}`, {
+        const progressRes = await axios.get(`http://localhost:3000/api/progress/${courseId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProgress(progressRes.data.weekProgress);
