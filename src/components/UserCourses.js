@@ -11,7 +11,7 @@ const UserCourses = ({ token }) => {
     const fetchUserCourses = async () => {
       try {
         // Fetch user data
-        const userRes = await axios.get('/api/user', { // Implement /api/user to get user info
+        const userRes = await axios.get('http://localhost:3000/api/user', { // Implement /api/user to get user info
           headers: { Authorization: `Bearer ${token}` }
         });
         const userCourses = userRes.data.courses;
@@ -20,7 +20,7 @@ const UserCourses = ({ token }) => {
 
         // Fetch progress for each course
         const progressPromises = userCourses.map(course =>
-          axios.get(`/api/progress/${course._id}`, {
+          axios.get(`http://localhost:3000/api/progress/${course._id}`, {
             headers: { Authorization: `Bearer ${token}` }
           })
         );
@@ -41,7 +41,7 @@ const UserCourses = ({ token }) => {
 
   const toggleComplete = async (courseId, weekId, currentStatus) => {
     try {
-      const res = await axios.put('/api/progress/update', {
+      const res = await axios.put('http://localhost:3000/api/progress/update', {
         courseId,
         weekId,
         completed: !currentStatus
