@@ -8,13 +8,15 @@ import { progressSchema } from './models/Course';
 
 import authenticationRoutes from './routes/auth.js';
 
-app.use('/api/auth', authenticationRoutes);
 
 dotenv.config();
 
 const app = express();
+
+app.use('/api/auth', authenticationRoutes);
 app.use(cors());
 app.use(express.json());
+
 
 // Initialize Groq client - correct syntax
 const groq = new Groq({
