@@ -52,20 +52,15 @@ const courseSchema = new mongoose.Schema({
 
 
 const progressSchema = new mongoose.Schema({
-    userId: String,
-    courseId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course',
-    },
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    courseId: {type: mongoose.Schema.Types.ObjectId, ref: 'Course', required: true},
     weekProgress: [{
-        weekId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Course.weeks'
-        },
-        // completed: True/False
-        completed: Boolean,
-        lastAccessed: Date
-    }]
+        weekId: {type: mongoose.Schema.Types.ObjectId, ref: 'Course.weeks', required: true},
+        completed: {type: Boolean, default: false},
+        lastAccessed: {type: Date, default: Date.now}
+    }],
+}, {
+    timestamps: true
 })
 
 const User = mongoose.model('User', userSchema);
