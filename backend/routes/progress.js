@@ -81,7 +81,7 @@ router.put('/update', authenticate, async(req, res) => {
         await progress.save();
         res.json({message: 'Week progress updated successfully'});
     } catch (error) {
-        res.status(500).json({error: 'Failed to update progress', message: error.messge});
+        res.status(500).json({error: 'Failed to update progress', message: error.message});
     }
 });
 

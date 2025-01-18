@@ -6,11 +6,24 @@ import jwt from 'jsonwebtoken';
 import courseRoutes from './routes/courses.js';
 import progressRoutes from './routes/progress.js';
 import authenticationRoutes from './routes/auth.js';
+import mongoose from 'mongoose';
 
 
 dotenv.config();
 
 const app = express();
+
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/course-generator';
+
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected'))
+.catch((err) => {
+  console.error('MongoDB connection error:', err);
+  process.exit(1);
+});
 
 app.use(cors());
 app.use(express.json());

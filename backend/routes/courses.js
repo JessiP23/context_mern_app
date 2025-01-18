@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 router.post('/select', authenticate, async(req, res) => {
     const {courseId} = req.body;
     try {
-        const user = await User.findbyId(req.user.userId);
+        const user = await User.findById(req.user.userId);
 
         // check if the user is already enrolled in the course
         if (!user) return res.status(404).json({error: 'User not found'});
