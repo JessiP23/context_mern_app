@@ -205,7 +205,7 @@ cd context_mern_app
 4. **Start the Backend Server:**
 
     ```bash
-    npm start
+    node server.js
     ```
 
     The backend server should now be running on `http://localhost:3000`.
