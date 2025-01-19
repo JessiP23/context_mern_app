@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+
+/**
+ * 
+ * Displays information about a course.
+ * Fetches course data from the backend API using the course ID.
+ * 
+ * 
+ */
+
 const CourseView = () => {
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
