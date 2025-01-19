@@ -242,7 +242,7 @@ Ensure that both frontend and backend are correctly configured to communicate wi
 
     ```bash
     cd backend
-    npm start
+    node server.js
     ```
 
 2. **Start the Frontend Server:**
