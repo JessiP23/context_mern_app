@@ -40,6 +40,7 @@ const App = () => {
     setToken('');
   };
 
+  // Set or remove the Authorization header globally for axios based on token presence
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
@@ -55,6 +56,8 @@ const App = () => {
             <button onClick={logout} className="text-red-500">Logout</button>
           ) : null}
         </nav>
+
+        {/** Routes for the app */}
         <Routes>
           <Route path="/" element={token ? <Navigate to="/generate" /> : <Auth setToken={saveToken} />} />
           <Route path="/generate" element={token ? <CourseGenerator /> : <Navigate to="/" />} />
