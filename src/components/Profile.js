@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+// cache key for user profile data in localstorage
 const CACHE_KEY = 'userProfileCache';
 
 const UserProfile = () => {
