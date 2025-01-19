@@ -16,9 +16,16 @@ import CourseView from './components/CourseView';
  * 2. CourseView: Page that displays a course
  * 3. UserProfile: Page that displays the user's profile and courses saved to the database
  * 
+ * 
+ * Save the token in localstorage and state
+ * 
+ * JWT token received from the server
+ * 
  */
 
 const App = () => {
+
+  // manage the authentication token
   const [token, setToken] = useState(localStorage.getItem('token') || '');
 
   const saveToken = (userToken) => {
@@ -26,6 +33,8 @@ const App = () => {
     setToken(userToken);
   };
 
+
+  // remove token from localstorage and reset the token state
   const logout = () => {
     localStorage.removeItem('token');
     setToken('');
