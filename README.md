@@ -30,7 +30,7 @@ The **Course Generator App** is a sophisticated platform designed to help educat
 - **Profile Management:** Users can view and manage their profiles, including saved courses and progress tracking.
 - **Course Viewing:** Detailed views of generated courses with week-by-week breakdowns and learning objectives.
 - **Progress Tracking:** Monitor and update course completion statuses.
-- **Responsive Design:** Built with React and Tailwind CSS to ensure a seamless experience across devices.
+- **Responsive Design:** Built with React and Tailwind CSS to ensure responsiveness.
 - **Caching Mechanisms:** Implements both client-side (`localStorage`) and server-side (Redis) caching for optimized performance.
 - **Robust Error Handling:** Comprehensive error feedback for a smooth user experience.
 
@@ -59,7 +59,7 @@ The **Course Generator App** is a sophisticated platform designed to help educat
 
 ## Architecture
 
-The application follows a classic **MERN stack** architecture with additional integrations for AI-driven content generation and caching mechanisms. Below is a high-level overview of the system architecture:
+The application follows a **MERN stack** architecture with integrations for AI-driven content generation and caching mechanisms. Below is a high-level overview of the system architecture:
 
 ### High-Level Architecture Diagram
 
