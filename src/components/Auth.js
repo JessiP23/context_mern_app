@@ -24,6 +24,7 @@ const Auth = ({ setToken }) => {
   // handle form input changes
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
