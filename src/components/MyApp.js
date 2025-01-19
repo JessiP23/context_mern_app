@@ -27,8 +27,10 @@ const CourseGenerator = () => {
   const [error, setError] = useState(null);
   const [savedCourse, setSavedCourse] = useState([]);
 
+  // hook for navigation
   const navigate = useNavigate();
 
+  // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -64,6 +66,8 @@ const CourseGenerator = () => {
 
       const data = await response.json();
       console.log('Received data:', data);
+
+      // update state with generated course structure
       setCourseStructure(data.course);
       setSavedCourse(data.course)
     } catch (err) {
