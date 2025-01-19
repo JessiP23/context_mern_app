@@ -34,6 +34,7 @@ const Auth = ({ setToken }) => {
     try {
       const response = await axios.post(url, form);
       if (isLogin) {
+        // set the token in localstorage and state
         setToken(response.data.token);
       } else {
         alert('Registration successful! Please log in.');
