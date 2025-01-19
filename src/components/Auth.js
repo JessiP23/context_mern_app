@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
+/**
+ * 
+ * Handles user authentication, including login and registration functionalities.
+ * Manages form state with backend API for authentication processes. 
+ * 
+ */
+
+
 const Auth = ({ setToken }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({ username: '', email: '', password: '' });
