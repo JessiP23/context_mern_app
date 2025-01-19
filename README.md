@@ -167,8 +167,8 @@ erDiagram
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/course-generator-app.git
-cd course-generator-app
+git clone https://github.com/JessiP23/context_mern_app.git
+cd context_mern_app
 ```
 
 
