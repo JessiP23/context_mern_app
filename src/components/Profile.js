@@ -62,8 +62,6 @@ const UserProfile = () => {
     };
   }, [navigate]);
 
-
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -90,7 +88,10 @@ const UserProfile = () => {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold">My Profile</h1>
-            
+            <div className="text-gray-600">
+              <p>{userProfile.email}</p>
+              <p className="text-sm">Member since: {new Date(userProfile.createdAt).toLocaleDateString()}</p>
+            </div>
           </div>
 
           <div className="space-y-6">
