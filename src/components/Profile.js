@@ -27,6 +27,14 @@ const UserProfile = () => {
         localStorage.removeItem(CACHE_KEY);
     }
 
+    /**
+     * 
+     * Fetch user profile from server
+     * Cache response to reduce API calls
+     * Cache strategy based on timestamp
+     * 
+     */
+
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
