@@ -49,6 +49,8 @@ const Auth = ({ setToken }) => {
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">{isLogin ? 'Login' : 'Register'}</h2>
       {error && <div className="bg-red-100 text-red-700 p-2 mb-4 rounded">{error}</div>}
+
+      {/** form for login or register */}
       <form onSubmit={handleSubmit} className="space-y-4">
         {!isLogin && (
           <div>
