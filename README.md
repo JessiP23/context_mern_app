@@ -297,8 +297,8 @@ Contributions are welcome! Please follow these steps:
 2. **Clone Your Fork**
 
     ```bash
-    git clone https://github.com/yourusername/course-generator-app.git
-    cd course-generator-app
+    git clone https://github.com/JessiP23/context_mern_app.git
+    cd context_mern_app
     ```
 
 3. **Create a Branch**
