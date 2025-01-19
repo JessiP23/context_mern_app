@@ -65,49 +65,56 @@ The application follows a classic **MERN stack** architecture with additional in
 
 ```mermaid
 graph TD
-%% Define the nodes
-subgraph User
-U[User]
-end
-subgraph Frontend
-F[React Application]
-end
-subgraph Backend
-B[Express Server]
-B -->|Handles| BA[Auth Routes]
-B -->|Handles| BC[Course Routes]
-B -->|Handles| BU[User Routes]
-B -->|Handles| BP[Progress Routes]
-B -->|Uses| BM[Authentication Middleware]
-B -->|Integrates with| LLM[LLM API (Groq SDK)]
-B -->|Connects to| DB[MongoDB Database]
-B -->|Caches with| CS[Redis Cache]
-end
-subgraph LLM_Service
-L[Groq SDK / External LLM]
-end
-subgraph Database
-DB[MongoDB]
-DB -->|Stores| UCol[Users Collection]
-DB -->|Stores| CCol[Courses Collection]
-DB -->|Stores| PCol[Progress Collection]
-end
-subgraph Caching
-CS[Redis Cache]
-end
-%% Define the edges
-U -->|Interacts with| F
-F -->|Sends HTTP Requests| B
-B -->|Processes Requests| BA
-B -->|Processes Requests| BC
-B -->|Processes Requests| BU
-B -->|Processes Requests| BP
-B -->|Validates| BM
-B -->|Generates Courses via| LLM
-LLM -->|Returns Data to| B
-B -->|Performs CRUD on| DB
-B -->|Caches Data in| CS
-F -->|Reads/Writes Cache| CS
+    %% Define the nodes
+    subgraph User["User"]
+        U["User"]
+    end
+    
+    subgraph Frontend["Frontend"]
+        F["React Application"]
+    end
+    
+    subgraph Backend["Backend"]
+        B["Express Server"]
+        BA["Auth Routes"]
+        BC["Course Routes"]
+        BU["User Routes"]
+        BP["Progress Routes"]
+        BM["Authentication Middleware"]
+        LLM["LLM API (Groq SDK)"]
+    end
+    
+    subgraph LLM_Service["LLM Service"]
+        L["Groq SDK / External LLM"]
+    end
+    
+    subgraph Database["Database"]
+        DB["MongoDB"]
+        UCol["Users Collection"]
+        CCol["Courses Collection"]
+        PCol["Progress Collection"]
+    end
+    
+    subgraph Caching["Caching"]
+        CS["Redis Cache"]
+    end
+    
+    %% Define the relationships
+    U --> F
+    F --> B
+    B --> BA
+    B --> BC
+    B --> BU
+    B --> BP
+    B --> BM
+    B --> LLM
+    LLM --> L
+    B --> DB
+    DB --> UCol
+    DB --> CCol
+    DB --> PCol
+    B --> CS
+    F --> CS
 ```
 
 ### Database Schema Diagram
