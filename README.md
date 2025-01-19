@@ -63,7 +63,7 @@ The application follows a classic **MERN stack** architecture with additional in
 
 ### High-Level Architecture Diagram
 
-mermaid
+```mermaid
 graph TD
 %% Define the nodes
 subgraph User
@@ -108,10 +108,11 @@ LLM -->|Returns Data to| B
 B -->|Performs CRUD on| DB
 B -->|Caches Data in| CS
 F -->|Reads/Writes Cache| CS
+```
 
 ### Database Schema Diagram
 
-mermaid
+```mermaid
 erDiagram
 USERS {
 ObjectId id PK
@@ -162,7 +163,7 @@ Date lastAccessed
 USERS ||--o{ COURSES : owns
 USERS ||--o{ PROGRESS : has
 COURSES ||--o{ PROGRESS : trackedBy
-
+```
 
 ## Installation
 
