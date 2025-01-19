@@ -29,7 +29,7 @@ const Auth = ({ setToken }) => {
     e.preventDefault();
     setError('');
 
-    // backend API endpoint for login or register
+    // backend API endpoint for login or register 
     const url = isLogin ? 'http://localhost:3000/api/auth/login' : 'http://localhost:3000/api/auth/register';
     try {
       const response = await axios.post(url, form);
