@@ -1,29 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
+const CACHE_KEY = 'userProfileCache';
+
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Simple cache implementation
-  const CACHE_KEY = 'userProfileCache';
-  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+  const clearCache = () => {
+    localStorage.removeItem(CACHE_KEY);
+  }
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        // Check cache first
-        const cachedData = localStorage.getItem(CACHE_KEY);
-        if (cachedData) {
-          const { data, timestamp } = JSON.parse(cachedData);
-          if (Date.now() - timestamp < CACHE_DURATION) {
-            setUserProfile(data);
-            setLoading(false);
-            return;
-          }
-        }
+        setLoading(true);
 
         const token = localStorage.getItem('token');
         if (!token) {
@@ -50,14 +44,37 @@ const UserProfile = () => {
 
         setUserProfile(data);
       } catch (err) {
-        setError(err.message);
+        if (err.message === 'Not authenticated') {
+            clearCache();
+            navigate('/login');
+        } else {
+            setError(err.message);
+        }
       } finally {
         setLoading(false);
       }
     };
 
     fetchUserProfile();
-  }, []);
+
+    return () => {
+        clearCache();
+    };
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    clearCache();
+    navigate('/login');
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="max-w-4xl mx-auto p-4">
@@ -80,6 +97,12 @@ const UserProfile = () => {
             <div className="text-gray-600">
               <p>{userProfile.email}</p>
               <p className="text-sm">Member since: {new Date(userProfile.createdAt).toLocaleDateString()}</p>
+              <button
+                onClick={handleLogout}
+                className="mt-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+              >
+                Logout
+              </button>
             </div>
           </div>
 
