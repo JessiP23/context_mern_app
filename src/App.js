@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Auth from './components/Auth';
-import CourseGenerator from './components/MyApp';
+import CourseGenerator from './components/NewCourse';
 import axios from 'axios';
 import UserProfile from './components/Profile';
 import CourseView from './components/CourseView';
