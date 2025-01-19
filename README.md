@@ -195,6 +195,7 @@ cd context_mern_app
     JWT_SECRET=your_jwt_secret
     REFRESH_TOKEN_SECRET=your_refresh_token_secret
     GROQ_API_KEY=your_groq_api_key
+    PORT=3000
     ```
 
     - Replace `your_mongodb_connection_string` with your MongoDB URI.
