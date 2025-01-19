@@ -77,6 +77,8 @@ const CourseGenerator = () => {
     }
   };
 
+
+  // add course to user profile
   const handleAddToProfile = async () => {
     if (!savedCourse) return;
 
@@ -117,11 +119,13 @@ const CourseGenerator = () => {
       <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
         <h2 className="text-2xl font-bold mb-6">Course Generator</h2>
         <button
-              onClick={() => navigate('/profile')}
-              className="ml-4 px-4 py-2 m-8 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
-            >
-              Go to My Profile
-            </button>
+          onClick={() => navigate('/profile')}
+          className="ml-4 px-4 py-2 m-8 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
+        >
+          Go to My Profile
+        </button>
+
+        {/** Form for generating a course */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
