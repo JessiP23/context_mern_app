@@ -45,8 +45,10 @@ const UserProfile = () => {
                     throw new Error('Not authenticated');
                 }
 
+                // fetch user profile from server
                 const response = await fetch('http://localhost:3000/api/user/profile', {
                     headers: {
+                        // set headers with token
                         'Authorization': `Bearer ${token}`
                     }
                 });
@@ -55,6 +57,7 @@ const UserProfile = () => {
                     throw new Error('Failed to fetch profile');
                 }
 
+                // parse the response as JSON
                 const data = await response.json();
                 
                 // Cache the response
@@ -63,12 +66,15 @@ const UserProfile = () => {
                     timestamp: Date.now()
                 }));
 
+                // update state with fetched profile data
                 setUserProfile(data);
             } catch (err) {
                 if (err.message === 'Not authenticated') {
+                    // clear cache and redirect to login page
                     clearCache();
                     navigate('/login');
                 } else {
+                    // set error message in state
                     setError(err.message);
                 }
             } finally {
@@ -105,12 +111,14 @@ const UserProfile = () => {
                 </div>
             )}
 
+            {/** Display user profile information */}
             {userProfile && (
                 <div className="bg-white rounded-lg shadow-lg p-6">
                     <div className="flex justify-between items-center mb-6">
                         <h1 className="text-2xl font-bold">My Profile</h1>
                         <div className="text-gray-600">
                             <p>{userProfile.email}</p>
+                            {/** Display member since date */}
                             <p className="text-sm">Member since: {new Date(userProfile.createdAt).toLocaleDateString()}</p>
                         </div>
                     </div>
@@ -127,10 +135,12 @@ const UserProfile = () => {
                             </button>
                         </div>
 
+                        {/** Display user's courses */}
                         {userProfile.courses?.length === 0 ? (
                             <p className="text-gray-600">No courses yet</p>
                             ) : (
                             <div className="grid gap-4 md:grid-cols-2">
+                                {/** Display each course */}
                                 {userProfile.courses?.map((course) => (
                                 <div key={course._id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
                                     <h3 className="font-bold text-lg mb-2">{course.name}</h3>
