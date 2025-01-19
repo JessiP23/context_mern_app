@@ -177,17 +177,19 @@ const CourseGenerator = () => {
         </div>
       )}
 
+      {/** Display the generated course structure */}
       {courseStructure && (
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-bold mb-6">Generated Course Structure</h2>
 
           <button
-              onClick={handleAddToProfile}
-              className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
-            >
-              Add to My Profile
-            </button>
-          
+            onClick={handleAddToProfile}
+            className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+          >     
+            Add to My Profile
+          </button>
+
+          {/** Display the course weeks and topics */}
           <div className="space-y-6">
             {courseStructure.weeks.map((week, index) => (
               <div 
