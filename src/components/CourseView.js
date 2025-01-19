@@ -24,29 +24,29 @@ const CourseView = () => {
 
     useEffect(() => {
         const fetchCourse = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-            throw new Error('Not authenticated');
-            }
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    throw new Error('Not authenticated');
+                }
 
-            const response = await fetch(`http://localhost:3000/api/courses/${courseId}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-            });
+                const response = await fetch(`http://localhost:3000/api/courses/${courseId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+                });
 
-            if (!response.ok) {
-            throw new Error('Failed to fetch course');
-            }
+                if (!response.ok) {
+                    throw new Error('Failed to fetch course');
+                }
 
-            const data = await response.json();
-            setCourse(data);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
+                const data = await response.json();
+                setCourse(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchCourse();
