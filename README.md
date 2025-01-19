@@ -121,55 +121,39 @@ graph TD
 
 ```mermaid
 erDiagram
-USERS {
-ObjectId id PK
-String username
-String email
-String password
-Array<ObjectId> courses FK "References COURSES.id"
-Date createdAt
-Date updatedAt
-}
-COURSES {
-ObjectId id PK
-ObjectId userId FK "References USERS.id"
-String name
-String description
-Array<Week> weeks
-Date lastUpdated
-Date createdAt
-Date updatedAt
-}
-PROGRESS {
-ObjectId id PK
-ObjectId userId FK "References USERS.id"
-ObjectId courseId FK "References COURSES.id"
-Array<WeekProgress> weekProgress
-Date createdAt
-Date updatedAt
-}
-%% Sub-documents
-Week {
-String title
-String description
-Array<Topic> topics
-Number order
-}
-Topic {
-String title
-String description
-String content
-Array<String> learningObjectives
-}
-WeekProgress {
-ObjectId weekId FK "References COURSES.weeks.id"
-Boolean completed
-Date lastAccessed
-}
-%% Relationships
-USERS ||--o{ COURSES : owns
-USERS ||--o{ PROGRESS : has
-COURSES ||--o{ PROGRESS : trackedBy
+    USERS {
+        string _id PK
+        string username
+        string email
+        string password
+        string[] courses FK
+        date createdAt
+        date updatedAt
+    }
+    
+    COURSES {
+        string _id PK
+        string userId FK
+        string name
+        string description
+        object[] weeks
+        date lastUpdated
+        date createdAt
+        date updatedAt
+    }
+    
+    PROGRESS {
+        string _id PK
+        string userId FK
+        string courseId FK
+        object[] weekProgress
+        date createdAt
+        date updatedAt
+    }
+    
+    USERS ||--o{ COURSES : "owns"
+    USERS ||--o{ PROGRESS : "has"
+    COURSES ||--o{ PROGRESS : "trackedBy"
 ```
 
 ## Installation
