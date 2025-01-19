@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+/**
+ * 
+ * User Profile Page
+ * Display authenticated user's profile with courses
+ * Cache to reduce API calls
+ */
+
+
 // cache key for user profile data in localstorage
 const CACHE_KEY = 'userProfileCache';
 
