@@ -114,7 +114,7 @@ const CourseGenerator = () => {
         <h2 className="text-2xl font-bold mb-6">Course Generator</h2>
         <button
               onClick={() => navigate('/profile')}
-              className="ml-4 px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
+              className="ml-4 px-4 py-2 m-8 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
             >
               Go to My Profile
             </button>
