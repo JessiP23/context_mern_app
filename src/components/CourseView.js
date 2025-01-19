@@ -22,6 +22,8 @@ const CourseView = () => {
     // navigate to other pages
     const navigate = useNavigate();
 
+
+    // fetch course data from the backend API
     useEffect(() => {
         const fetchCourse = async () => {
             try {
