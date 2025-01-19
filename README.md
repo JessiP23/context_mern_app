@@ -12,10 +12,9 @@
 6. [Configuration](#configuration)
 7. [Running the Application](#running-the-application)
 8. [Project Structure](#project-structure)
-9. [API Endpoints](#api-endpoints)
-10. [Security Considerations](#security-considerations)
-11. [Contributing](#contributing)
-12. [License](#license)
+9. [Security Considerations](#security-considerations)
+10. [Contributing](#contributing)
+11. [License](#license)
 
 ---
 
