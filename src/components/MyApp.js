@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
  * MERN stack
  * 
  * Takes course name and description to display an AI-generated course structure on the topic specified by the user
- * 
+ * Communicate with the backend to generate and save courses
  * 
  * 
  * @see React Hooks: https://react.dev/reference/react
