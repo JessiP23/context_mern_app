@@ -346,4 +346,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 Feel free to reach out for any queries or support!
 
-- **Contact:** [your.email@example.com](mailto:your.email@example.com)
+- **Contact:** [jessi316866@gmail.com](mailto:jessi316866@gmail.com)
