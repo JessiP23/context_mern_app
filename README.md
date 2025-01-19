@@ -1,6 +1,6 @@
 # Course Generator App
 
-![Course Generator Logo](src/logo.svg)
+![Course Generator Logo](src/math.png)
 
 ## Table of Contents
 
