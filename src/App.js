@@ -8,6 +8,16 @@ import axios from 'axios';
 import UserProfile from './components/Profile';
 import CourseView from './components/CourseView';
 
+
+/**
+ * 
+ * Routing for the app
+ * 1. CourseGenerator: Page that generates a course
+ * 2. CourseView: Page that displays a course
+ * 3. UserProfile: Page that displays the user's profile and courses saved to the database
+ * 
+ */
+
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
 
