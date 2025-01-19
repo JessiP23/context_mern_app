@@ -93,6 +93,7 @@ const CourseView = () => {
                 
                 <p className="text-gray-600 mb-8">{course.description}</p>
 
+                {/** Display the course weeks and topics */}
                 <div className="space-y-8">
                 {course.weeks.map((week, index) => (
                     <div key={week._id} className="border rounded-lg p-6">
@@ -101,11 +102,13 @@ const CourseView = () => {
                         </h2>
                         <p className="text-gray-600 mb-4">{week.description}</p>
                         
+                        {/** Display the topics for each week */}
                         <div className="space-y-4">
                             {week.topics.map((topic, topicIndex) => (
                             <div key={topicIndex} className="bg-gray-50 rounded-lg p-4">
                                 <h3 className="font-medium mb-2">{topic.title}</h3>
                                 <p className="text-gray-600 mb-3">{topic.description}</p>
+                                {/** Display the learning objectives for each topic */}
                                 <div className="space-y-2">
                                     <h4 className="font-medium text-sm text-gray-700">Learning Objectives:</h4>
                                     <ul className="list-disc list-inside space-y-1">
