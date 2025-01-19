@@ -11,12 +11,17 @@ import axios from 'axios';
 
 
 const Auth = ({ setToken }) => {
+  // state for login or register
   const [isLogin, setIsLogin] = useState(true);
+  // state for form data
   const [form, setForm] = useState({ username: '', email: '', password: '' });
+  // state for error message
   const [error, setError] = useState('');
 
+  // toggle between login and register
   const toggleMode = () => setIsLogin(!isLogin);
 
+  // handle form input changes
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
